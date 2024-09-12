@@ -1,11 +1,9 @@
-from torch import nn
 import torch
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
 from scipy.io import arff
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-from model.conv import SDPClassifierCNN
-
+from MELOSDP.SDP.model.conv import SDPClassifierCNN
 
 def inference_conv(dataset_name='mc1', label_name='Defective'):
     # dataset_name = 'kc2'
