@@ -59,7 +59,7 @@ def suggestion_test():
 @app.route('/dataTest', methods=['POST'])
 def data_test():
     # 获取文件
-    file = request.files.get('file')
+    # file = request.files.get('file')
 
     # 获取其他表单数据
     dl_models = request.form.get('dlModels')
@@ -72,7 +72,7 @@ def data_test():
     ml_models = json.loads(ml_models)
     metrics = json.loads(metrics)
 
-    file_content = file.read().decode('utf-8')
+    # file_content = file.read().decode('utf-8')
 
     # print(file_content)
     print(ml_models)
@@ -80,12 +80,33 @@ def data_test():
     print(metrics)
     print(test_type)
 
-    # 处理接收到的数据
+    # 生成结果数据，每个模型对应一个数据数组
+    data = []
+
+    for model in dl_models:
+        if model == "FCFNN":
+            data.append({'type': model, 'data': [0, 0, 0, 0, 0]})
+        elif model == "CNN":
+            data.append({'type': model, 'data': [0, 0, 0, 0, 0]})
+        else:
+            data.append({'type': model, 'data': [0, 0, 0, 0, 0]})
+
+    for model in ml_models:
+        if model == "SVM":
+            data.append({'type': model, 'data': [0, 0, 0, 0, 0]})
+        elif model == "RF":
+            data.append({'type': model, 'data': [0, 0, 0, 0, 0]})
+        elif model == "NBC":
+            data.append({'type': model, 'data': [0, 0, 0, 0, 0]})
+        elif model == "KM":
+            data.append({'type': model, 'data': [0, 0, 0, 0, 0]})
+        else:
+            data.append({'type': model, 'data': [0, 0, 0, 0, 0]})
 
     response_data = {
         'code': 400,
         "message": "Data received successfully",
-        'data': "success"
+        'data': data
     }
     return jsonify(response_data)
 
