@@ -6,6 +6,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from model.conv import SDPClassifierCNN
 
+
 def inference_conv(dataset_name='mc1', label_name='Defective'):
     # dataset_name = 'kc2'
     # label_name = 'problems'
@@ -59,11 +60,12 @@ def inference_conv(dataset_name='mc1', label_name='Defective'):
         # 计算ROC AUC
         test_roc_auc = roc_auc_score(y_test_true, train_pred)
 
-        print(f"Test Accuracy: {test_accuracy:.4f}, Test Precision: {test_precision:.4f}, Test Recall: {test_recall:.4f}, Test F1: {test_f1:.4f}, Test ROC AUC: {test_roc_auc:.4f}")
+        print(
+            f"Test Accuracy: {test_accuracy:.4f}, Test Precision: {test_precision:.4f}, Test Recall: {test_recall:.4f}, Test F1: {test_f1:.4f}, Test ROC AUC: {test_roc_auc:.4f}")
 
         return [round(metric, 2) for metric in [test_roc_auc, test_accuracy, test_f1, test_precision, test_recall]]
 
 
 if __name__ == '__main__':
-   result_list = inference_conv()
-   print(result_list)
+    result_list = inference_conv()
+    print(result_list)

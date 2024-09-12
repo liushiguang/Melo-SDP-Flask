@@ -6,7 +6,10 @@ from MELOSDP.util import APIResponse
 import json
 from llms.check_code import check_code
 from llms.repair_code import fetch_code_suggestions
-
+from SDP.machine_learning import naive_bayes_classifier,random_forest,supporting_vector_machine
+from SDP.kmeans import kmeans_classifier
+from SDP.inference_conv import inference_conv
+from SDP.inference_linearn import inference_linear
 
 # 测试方法
 @app.route('/test', methods=['GET'])
@@ -85,21 +88,21 @@ def data_test():
 
     for model in dl_models:
         if model == "FCFNN":
-            data.append({'type': model, 'data': [0, 0, 0, 0, 0]})
+            data.append({'type': model, 'data': inference_conv()})
         elif model == "CNN":
-            data.append({'type': model, 'data': [0, 0, 0, 0, 0]})
+            data.append({'type': model, 'data': inference_linear()})
         else:
             data.append({'type': model, 'data': [0, 0, 0, 0, 0]})
 
     for model in ml_models:
         if model == "SVM":
-            data.append({'type': model, 'data': [0, 0, 0, 0, 0]})
+            data.append({'type': model, 'data': supporting_vector_machine()})
         elif model == "RF":
-            data.append({'type': model, 'data': [0, 0, 0, 0, 0]})
+            data.append({'type': model, 'data': random_forest()})
         elif model == "NBC":
-            data.append({'type': model, 'data': [0, 0, 0, 0, 0]})
+            data.append({'type': model, 'data': naive_bayes_classifier()})
         elif model == "KM":
-            data.append({'type': model, 'data': [0, 0, 0, 0, 0]})
+            data.append({'type': model, 'data': kmeans_classifier()})
         else:
             data.append({'type': model, 'data': [0, 0, 0, 0, 0]})
 
