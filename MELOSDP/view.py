@@ -85,9 +85,9 @@ def data_test():
 
     for model in dl_models:
         if model == "FCFNN":
-            data.append({"type": model, "data": inference_conv()})
-        elif model == "CNN":
             data.append({"type": model, "data": inference_linear()})
+        elif model == "CNN":
+            data.append({"type": model, "data": inference_conv()})
         else:
             data.append({"type": model, "data": [0, 0, 0, 0, 0]})
 
