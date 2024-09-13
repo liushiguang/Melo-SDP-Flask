@@ -10,7 +10,7 @@ def inference_conv(dataset_name='mc1', label_name='Defective'):
     # label_name = 'problems'
 
     # 加载ARFF数据
-    data, meta = arff.loadarff(f"data/{dataset_name}/test.arff")
+    data, meta = arff.loadarff(f"SDP/data/{dataset_name}/test.arff")
 
     # 将ARFF数据转换为DataFrame
     df = pd.DataFrame(data)
@@ -36,7 +36,7 @@ def inference_conv(dataset_name='mc1', label_name='Defective'):
 
     # 加载模型
     model = SDPClassifierCNN().to(device)
-    state_dict = torch.load(f"chkpt/{dataset_name}/conv/2/sdp_classifier_conv-300.pth", weights_only=True)
+    state_dict = torch.load(f"SDP/chkpt/{dataset_name}/conv/2/sdp_classifier_conv-300.pth", weights_only=True)
     model.load_state_dict(state_dict)
 
     # 测试

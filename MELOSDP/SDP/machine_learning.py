@@ -11,7 +11,7 @@ from sklearn.ensemble import RandomForestClassifier
 # 读取数据
 def load_data(dataset_name='mc1', label_name='Defective'):
     # 加载数据并处理
-    data, meta = arff.loadarff(f'data/{dataset_name}/train.arff')
+    data, meta = arff.loadarff(f'SDP/data/{dataset_name}/train.arff')
     df = pd.DataFrame(data)
 
     # 预处理数据，将'Defective'列转化为二进制标签

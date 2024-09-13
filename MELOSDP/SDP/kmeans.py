@@ -12,7 +12,7 @@ def kmeans_classifier(dataset_name = 'mc1', label_name = 'Defective'):
     # dataset_name = 'kc2'
     # label_name = 'problems'
 
-    data, meta = arff.loadarff(f'dataset/{dataset_name.upper()}.arff')
+    data, meta = arff.loadarff(f'SDP/dataset/{dataset_name.upper()}.arff')
     df = pd.DataFrame(data)
     print(df.head())
 
