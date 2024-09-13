@@ -1,11 +1,10 @@
 import pandas as pd
-from param import random_seed
 from scipy.io import arff
 import torch
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import torch.nn as nn
-from model.linear import SDPClassifierNN
+from MELOSDP.SDP.model.linear import SDPClassifierNN
 from tqdm import tqdm
 from torch.utils.tensorboard import SummaryWriter
 import os

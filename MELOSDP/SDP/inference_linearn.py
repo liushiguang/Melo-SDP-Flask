@@ -1,17 +1,17 @@
-from model.linear import SDPClassifierNN
 import torch
 from torch import nn
 from scipy.io import arff
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
+from MELOSDP.SDP.model.linear import SDPClassifierNN
 
 def inference_linear(dataset_name='mc1', label_name='Defective'):
     # dataset_name = 'kc2'
     # label_name = 'problems'
 
     # 加载ARFF数据
-    data, meta = arff.loadarff(f"data/{dataset_name}/test.arff")
+    data, meta = arff.loadarff(f"SDP/data/{dataset_name}/test.arff")
 
     # 将ARFF数据转换为DataFrame
     df = pd.DataFrame(data)
@@ -38,7 +38,7 @@ def inference_linear(dataset_name='mc1', label_name='Defective'):
     # 加载模型
     input_size = x_test.shape[1]
     model = SDPClassifierNN(input_size).to(device)
-    state_dict = torch.load(f"chkpt/{dataset_name}/linear/9/sdp_classifier_linear-400.pth", weights_only=True)
+    state_dict = torch.load(f"SDP/chkpt/{dataset_name}/linear/9/sdp_classifier_linear-400.pth", weights_only=True)
     model.load_state_dict(state_dict)
 
     # 损失函数

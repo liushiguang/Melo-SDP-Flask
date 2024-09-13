@@ -1,5 +1,3 @@
-from cProfile import label
-
 import numpy as np
 from scipy.io import arff
 import pandas as pd
@@ -8,14 +6,13 @@ from sklearn.decomposition import PCA
 from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_score, roc_curve, roc_auc_score, \
     silhouette_score
 import matplotlib.pyplot as plt
-from sklearn.mixture import GaussianMixture
 from sklearn.preprocessing import StandardScaler, Normalizer
 
 def kmeans_classifier(dataset_name = 'mc1', label_name = 'Defective'):
     # dataset_name = 'kc2'
     # label_name = 'problems'
 
-    data, meta = arff.loadarff(f'dataset/{dataset_name.upper()}.arff')
+    data, meta = arff.loadarff(f'SDP/dataset/{dataset_name.upper()}.arff')
     df = pd.DataFrame(data)
     print(df.head())
 
